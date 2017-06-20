@@ -1,7 +1,7 @@
 #!/usr/bin/python2.6
 
 #=#=#=#=#=#=#
-# @author: Aaron Russo (theoverburn@gmail.com)
+# @author: Aaron Russo (aaron.n.russo@gmail.com)
 # @date:   20-Feb-2011
 # @purpose: To quickly parse log files, printing out relevant lines based on 
 #           search input
