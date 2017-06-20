@@ -3,11 +3,10 @@
 #=#=#=#=#=#=#
 # @author: Aaron Russo (aaron.n.russo@gmail.com)
 # @date:   20-Feb-2011
-# @purpose: To quickly parse log files, printing out relevant lines based on 
+# @purpose: To quickly parse log files, printing out relevant lines based on
 #           search input
 # @notes:  written for submission to reddit.com job challenge
 #=#=#=#=#=#=#
-
 
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=##=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
 # IMPORT VALUES
@@ -28,7 +27,7 @@ _TIME_TYPE_ERROR=-1
 
 _PATTERN_24HOURS='([0-1]?[0-9]|[2][0-3])'
 _PATTERN_60MINS='([0-5][0-9])'
-_PATTERN_60SECS='([0-5][0-9])' 
+_PATTERN_60SECS='([0-5][0-9])'
 _PATTERN_FULLTIME=_PATTERN_24HOURS+":"+_PATTERN_60MINS+":"+_PATTERN_60SECS
 
 _FIRST_ENTRY = 0
@@ -67,7 +66,7 @@ def main():
         _input_file=arg
         debug("logfile: "+_input_file)
       else:                    # no!
-        print "bad input: '"+arg+"'"      
+        print "bad input: '"+arg+"'"
         exit()
 
   ######## Begin Searching Through File
@@ -77,7 +76,6 @@ def main():
   except:
     print "Unexpected error:", sys.exc_info()[0]
 
-  
 
 def getEntries(type,time):
   if time==_TIME_TYPE_SPECIFIC:
@@ -87,11 +85,13 @@ def getEntries(type,time):
     e_start = findTime(f,buildTime(time[0],time[1],time[2],_FIRST))
     e_end   = findTime(f,buildTime(time[3],time[4],time[5],_LAST))
 
+
 # returns the beginning of the line that we find the entry, not the entry location
 # fol = first or last
 def findTime(file,time,fol = _FIRST_ENTRY):
   mid = _file_len/2
-  debug("char midpoint: "+str(mid))    
+  debug("char midpoint: "+str(mid))
+
 
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=##=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
 # getTimeType(input) - determines what type of search type the user wants
@@ -124,12 +124,14 @@ def getTimeType(input):
     return (_TIME_TYPE_RANGE,result_tpl)
   else:
     debug("not range implicit time type!",1)
-  
+
   return (_TIME_TYPE_ERROR,result)
+
 
 # quick function to build time string
 def buildTime(hour,minute,second):
   return hour+":"+minute+":"+second
+
 
 # quick function to build range string
 def buildTimeRange(s_hour,s_min,s_sec,f_hour,f_min,f_sec):
@@ -137,10 +139,7 @@ def buildTimeRange(s_hour,s_min,s_sec,f_hour,f_min,f_sec):
 
 
 def usage():
-  print "usage: "+sys.argv[0]+" <time|time range> [logfile]" 
-
-
-
+  print "usage: "+sys.argv[0]+" <time|time range> [logfile]"
 
 
 def debug(msg,lvl=0):
