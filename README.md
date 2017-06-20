@@ -1,7 +1,7 @@
 _In Febuary 2011, Reddit was looking to [hire some systems
 engineers](https://www.reddit.com/r/blog/comments/fjgit/reddit_is_doubling_the_size_of_its_programming/),
 and asked applicants to write a tool to search through web log files in a
-specific format by date/time. This was my (unsubmitted) attempt to the backend
+specific format by date/time. This is my unfinished attempt to the backend
 challenge._
 
 ## Project Requirements
@@ -21,11 +21,18 @@ http://www.reddit.com/r/pics/?count=75&after=t3_fiic6|201.8.487.192|17.86.820.11
 
 3. Code must be leglible
 
-## Given Assumptions
+### Given Details
+
 * Each line starts with a date time
 * Each log contains a single 24-hour period +- a few minutes
 * Timestamps are always increasing in order
 * You can ignore daylight savings
 
-## My assumptions
+### Assumptions
+
 * Time is in 24-hour notation (as was shown in the example: "tgrep 23:59-0:03")
+
+## Approach
+
+Attempt to do a binary search on the file, using the file size to estimate the
+mid points used to reduce the search area by (theoretically) half.
